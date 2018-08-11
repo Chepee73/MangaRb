@@ -1,8 +1,14 @@
 require 'sinatra'
-require 'sinatra/reloader'
+#require 'sinatra/reloader'
 
 set :session_secret, 'asdkjadljakldsj'
 enable :sessions
+
+get '/' do
+  erb :index
+end
+
+
 get '/hi' do
   print session
   @name = session.delete(:user)
