@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/reloader'
+#require 'sinatra/reloader'
 
 set :session_secret, 'asdkjadljakldsj'
 enable :sessions
