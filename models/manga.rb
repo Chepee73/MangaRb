@@ -30,7 +30,8 @@ class MangaSerializer
         author: @manga.author,
         title: @manga.title,
         cover_url: @manga.cover_url,
-        release_date: @manga.release_date.to_s
+        release_date: @manga.release_date.to_s,
+        chapters: @manga.chapters.each { |c| c._id }
     }
     data[:errors] = @manga.errors if @manga.errors.any?
     data

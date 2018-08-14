@@ -1,0 +1,1 @@
+Dir['./test/*.rb'].each { |test| p  test }
