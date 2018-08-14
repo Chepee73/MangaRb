@@ -1,12 +1,20 @@
 require 'sinatra/namespace'
 require './helpers/api_helpers'
+
+set :session_secret, 'asdkjadljakldsj'
+enable :sessions
+
+###############################################
 get '/' do
   erb :index
 end
 
 get '/create' do
+  @mangas = Manga.all
   erb :create
 end
+###############################################
+
 
 namespace '/api/v1' do
   before do
@@ -26,7 +34,7 @@ namespace '/api/v1' do
       author = params[:author]
 
       manga = Manga.create(title: title, author: author)
-
+      MangaSerializer.new(manga).to_json
     end
 
 
@@ -44,7 +52,19 @@ namespace '/api/v1' do
   namespace '/chapters' do
     get '' do
       chapters = Chapter.all
+      %i[title number].each do |filter|
+        chapters = chapters.send(filter, params[filter]) if params[filter]
+      end
       chapters.to_json
+    end
+
+    post '' do
+      title = params[:title]
+      number = params[:number]
+      manga_id = params[:manga]
+      pages = params[:pages].split()
+      chapter = Chapter.create(title: title, number: number, manga_id: manga_id, pages:pages)
+      chapter.to_json
     end
   end
 end
