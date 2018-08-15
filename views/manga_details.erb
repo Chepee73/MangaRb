@@ -1,2 +1,6 @@
-<h1><%= manga.title %></h1>
-<h2><%= manga.author %></h2>
+<% if manga %>
+  <h1><%= manga.title %></h1>
+  <h2><%= manga.author %></h2>
+<% else %>
+    No se han encontrado resultados para la busqueda.
+<% end %>

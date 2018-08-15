@@ -1,4 +1,2 @@
-require 'mongoid'
-
-Mongoid.load! './config/mongoid.config'
-
+require 'sequel'
+DB = Sequel.connect(adapter: 'mysql2', database: 'mangarbDev', host: 'localhost', user: 'mangarb')
