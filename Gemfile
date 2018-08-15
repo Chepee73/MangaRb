@@ -1,7 +1,8 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'mysql2'
-gem 'sequel'
-gem 'sinatra'
-gem 'sinatra-contrib'
-
+gem "mysql2"
+gem "rake"
+gem "sequel"
+gem "sequel-rake"
+gem "sinatra"
+gem "sinatra-contrib"

@@ -3,9 +3,9 @@ class Manga < Sequel::Model
 
   def to_api
     {
-        title: title,
-        author: author,
-        chapters: chapters
+      title: title,
+      author: author,
+      chapters: chapters.map { |c| c.id }
     }
   end
 end

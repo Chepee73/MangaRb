@@ -1,17 +1,23 @@
 require 'sinatra/namespace'
-require './helpers/api_helpers'
 
 set :session_secret, 'asdkjadljakldsj'
 enable :sessions
 
-###############################################
-get '/' do
-  erb :index
-end
+ROOT = ['', '/']
 
-get '/create' do
-  @mangas = Manga.all
-  erb :create
+###############################################
+namespace '' do
+  before do
+    content_type 'text/html'
+  end
+  get ROOT do
+    erb :index
+  end
+
+  get '/create' do
+    @mangas = Manga.all
+    erb :create
+  end
 end
 ###############################################
 

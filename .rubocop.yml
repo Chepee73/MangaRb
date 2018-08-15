@@ -1,0 +1,7 @@
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
