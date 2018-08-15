@@ -7,7 +7,7 @@ namespace "/chapters" do
     %i[title number].each do |filter|
       chapters = chapters.send(filter, params[filter]) if params[filter]
     end
-    chapters.to_json
+    chapters.map { |c| c.to_api}.to_json
   end
 
   post ROOT do
@@ -24,6 +24,6 @@ namespace "/chapters" do
 
     chapter.save
 
-    chapter.to_api
+    chapter.to_api.to_json
   end
 end

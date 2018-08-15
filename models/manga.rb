@@ -5,7 +5,7 @@ class Manga < Sequel::Model
     {
       title: title,
       author: author,
-      chapters: chapters.map { |c| c.id }
+      chapters: chapters.map { |c| c.id  }
     }
   end
 end

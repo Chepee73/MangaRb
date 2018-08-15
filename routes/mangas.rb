@@ -7,7 +7,12 @@ namespace '/mangas' do
     %i[title author].each do |filter|
       mangas = mangas.send(filter, params[filter]) if params[filter]
     end
-    mangas.map { |m| m.to_api }.to_json
+    if mangas.length > 1
+      mangas.map { |m| m.to_api }.to_json
+    else
+      mangas.to_api
+    end
+
   end
 
   post ROOT do
@@ -18,7 +23,7 @@ namespace '/mangas' do
 
     manga = Manga.create(title: title, author: author)
     p manga
-    manga.to_api
+    manga.to_api.to_json
   end
 
 
