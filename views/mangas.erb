@@ -1,0 +1,8 @@
+<div class="row-md-6">
+  <ul>
+    <% mangas.each do |m| %>
+      <% title = m["title"] %>
+      <li><a href="/mangas/<%= title %>"><%= title %></a></li>
+    <% end %>
+  </ul>
+</div>

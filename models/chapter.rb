@@ -6,7 +6,7 @@ class Chapter < Sequel::Model
     {
         title: title,
         number: number,
-        pages: pages.map { |p| p.url }
+        pages: pages.map {|p| p.url}
     }
   end
 end

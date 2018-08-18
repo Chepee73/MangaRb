@@ -1,6 +1,13 @@
 <% if manga %>
   <h1><%= manga.title %></h1>
   <h2><%= manga.author %></h2>
+  <% if manga.chapters.length > 0 %>
+    <ul>
+    <% manga.chapters.each do |chapter| %>
+      <li><a href="/mangas/<%= manga.title %>/chapters/<%= chapter.id %>"><%= chapter.number %></li>
+    <% end %>
+    </ul>
+  <% end %>
 <% else %>
     No se han encontrado resultados para la busqueda.
 <% end %>

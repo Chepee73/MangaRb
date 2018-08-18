@@ -1,4 +1,4 @@
-namespace "/chapters" do
+namespace "/api/chapters" do
   before do
     content_type "application/json"
   end
@@ -19,11 +19,16 @@ namespace "/chapters" do
     chapter = Chapter.create(title: title, number: number, manga_id: manga_id)
 
     pages.each_with_index do |page, i|
-      chapter.add_page(Page.create(number:i, url:page, chapter_id: chapter.id))
+      chapter.add_page(number: i, url: page)
     end
 
     chapter.save
 
+    chapter.to_api.to_json
+  end
+
+  get "/:id" do
+    chapter = Chapter.find(id: params[:id])
     chapter.to_api.to_json
   end
 end
